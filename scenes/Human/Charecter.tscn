@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cdv3hdxldoxay"]
+
+[ext_resource type="Script" uid="uid://boissfu2urqxp" path="res://scenes/Human/character_body_3d.gd" id="1_hiovg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b3ygk"]
+height = 2.0141602
+
+[node name="Node3D" type="Node3D" unique_id=307893902]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=2003278769]
+script = ExtResource("1_hiovg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=350213730]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_b3ygk")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=1660506896]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -0.009115696)
+current = true
+fov = 88.86298
