@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://cw1x30dkhf2g8"]
+
+[ext_resource type="PackedScene" uid="uid://cdv3hdxldoxay" path="res://scenes/Human/Charecter.tscn" id="1_wu6lt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v20t1"]
+size = Vector3(20, 0.1, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_74lek"]
+albedo_color = Color(0.25727844, 0.9999998, 0.9545484, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_b3ygk"]
+size = Vector3(20, 0.1, 20)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5vqcf"]
+
+[sub_resource type="Sky" id="Sky_v20t1"]
+sky_material = SubResource("ProceduralSkyMaterial_5vqcf")
+
+[sub_resource type="Environment" id="Environment_b3ygk"]
+background_mode = 2
+sky = SubResource("Sky_v20t1")
+
+[node name="Test" type="Node3D" unique_id=761898617]
+
+[node name="floor" type="StaticBody3D" parent="." unique_id=1432026889]
+
+[node name="Floor" type="CollisionShape3D" parent="floor" unique_id=1379754860]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+shape = SubResource("BoxShape3D_v20t1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor" unique_id=773232331]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+material_overlay = SubResource("StandardMaterial3D_74lek")
+mesh = SubResource("BoxMesh_b3ygk")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1192494247]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.854784, 0)
+light_energy = 16.0
+light_indirect_energy = 16.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=7846786]
+environment = SubResource("Environment_b3ygk")
+
+[node name="Node3D" parent="." unique_id=307893902 instance=ExtResource("1_wu6lt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.572318, 0)
