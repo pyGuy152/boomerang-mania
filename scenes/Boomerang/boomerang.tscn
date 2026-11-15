@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://cbpa0o2w8eby5"]
+
+[ext_resource type="PackedScene" uid="uid://gogkxe08u7m4" path="res://boomerang.glb" id="2_cey58"]
+[ext_resource type="Shader" uid="uid://crpcopk8v0kxm" path="res://Material/dither.gdshader" id="3_4qen4"]
+[ext_resource type="Texture2D" uid="uid://bkepua4hetuql" path="res://boomerang_0.png" id="4_aqwbd"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bsepv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jbt56"]
+render_priority = 0
+shader = ExtResource("3_4qen4")
+shader_parameter/albedo_tex = ExtResource("4_aqwbd")
+shader_parameter/tint = Color(1, 1, 1, 1)
+shader_parameter/use_texture = 1.0
+shader_parameter/global_size = 0.5
+shader_parameter/lit_boost = 1.0
+shader_parameter/l1_threshold = 0.75
+shader_parameter/l1_size = 4.0
+shader_parameter/l1_strength = 2.0
+shader_parameter/l1_darkness = 0.3
+shader_parameter/l2_threshold = 0.45
+shader_parameter/l2_size = 4.0
+shader_parameter/l2_strength = 2.0
+shader_parameter/l2_darkness = 0.4
+shader_parameter/l3_threshold = 0.2
+shader_parameter/l3_size = 4.0
+shader_parameter/l3_strength = 2.0
+shader_parameter/l3_darkness = 0.6
+
+[node name="Boomerang" type="Area3D" unique_id=537538721]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=777100821]
+transform = Transform3D(0.17486398, -0.006488673, -0.0023425652, 0.0025985066, 0.006904563, 0.17484441, -0.0063904803, -0.17474328, 0.0069955406, 0, 0.030023873, 0)
+shape = SubResource("CapsuleShape3D_bsepv")
+
+[node name="Sketchfab_Scene" parent="." unique_id=193428793 instance=ExtResource("2_cey58")]
+transform = Transform3D(0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, 0, 0, 0)
+
+[node name="Object_2" parent="Sketchfab_Scene/Sketchfab_model/23de6acfcea54815a637ec7637eaac3b_obj_cleaner_materialmerger_gles" parent_id_path=PackedInt32Array(193428793, 1990785385) index="0" unique_id=1919809975]
+material_override = SubResource("ShaderMaterial_jbt56")
+
+[editable path="Sketchfab_Scene"]

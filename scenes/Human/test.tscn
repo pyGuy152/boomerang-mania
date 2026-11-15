@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://cw1x30dkhf2g8"]
 
 [ext_resource type="PackedScene" uid="uid://cdv3hdxldoxay" path="res://scenes/Human/Charecter.tscn" id="1_wu6lt"]
-[ext_resource type="Script" uid="uid://boissfu2urqxp" path="res://scenes/Human/character_body_3d.gd" id="2_bybsj"]
 [ext_resource type="PackedScene" uid="uid://btip20urly5ic" path="res://scenes/Enemy/Enemy.tscn" id="2_rs8fj"]
-[ext_resource type="Script" uid="uid://b3brvrajuexcg" path="res://Scripts/Enemy.gd" id="3_n60r3"]
+[ext_resource type="PackedScene" uid="uid://cbpa0o2w8eby5" path="res://scenes/Boomerang/boomerang.tscn" id="3_ckxwe"]
+[ext_resource type="Script" uid="uid://ciw1dgp771c0w" path="res://scenes/Boomerang/boomerang.gd" id="4_bybsj"]
+[ext_resource type="Script" uid="uid://b3brvrajuexcg" path="res://Scripts/Enemy.gd" id="5_jbt56"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_bde3n"]
 height = 1.6083984
@@ -25,6 +26,10 @@ sky_material = SubResource("ProceduralSkyMaterial_5vqcf")
 [sub_resource type="Environment" id="Environment_b3ygk"]
 background_mode = 2
 sky = SubResource("Sky_v20t1")
+tonemap_mode = 3
+tonemap_exposure = 0.73
+ssao_enabled = true
+glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bybsj"]
 size = Vector3(1.0810547, 0.9805908, 1.435669)
@@ -38,7 +43,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.80322266, 0)
 shape = SubResource("CylinderShape3D_bde3n")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor" unique_id=773232331]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013669729, -0.27134657, -0.02627635)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3733728, -0.35885477, -0.20609951)
 material_overlay = SubResource("StandardMaterial3D_74lek")
 mesh = SubResource("CylinderMesh_bybsj")
 
@@ -55,15 +60,29 @@ environment = SubResource("Environment_b3ygk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.146151, 2.572318, 0)
 
 [node name="CharacterBody3D" parent="Player" index="0" unique_id=2003278769 groups=["player"]]
-script = ExtResource("2_bybsj")
+
+[node name="Camera3D" parent="Player/CharacterBody3D" index="1" unique_id=1660506896]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5999999, -0.009115696)
+
+[node name="HandPoint" type="Node3D" parent="Player/CharacterBody3D/Camera3D" index="0" unique_id=1107384663 node_paths=PackedStringArray("player")]
+script = ExtResource("4_bybsj")
+boomerang_scene = ExtResource("3_ckxwe")
+max_pull = Vector3(0.2, 0, 0.1)
+player = NodePath("../..")
+
+[node name="Hand" type="Node3D" parent="Player/CharacterBody3D/Camera3D/HandPoint" unique_id=1062161042]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25592804, -0.13694763, -0.34059)
+
+[node name="bg_scary" parent="Player/CharacterBody3D" index="4" unique_id=947128429]
+volume_db = -22.375
 
 [node name="Enemy" parent="." unique_id=326389053 instance=ExtResource("2_rs8fj")]
 transform = Transform3D(2.48, 0, 0, 0, 2.48, 0, 0, 0, 2.48, 2.5229216, 1.2124555, -4.410925)
 
 [node name="CharacterBody3D" parent="Enemy" index="0" unique_id=1380758884]
-script = ExtResource("3_n60r3")
+script = ExtResource("5_jbt56")
 
-[node name="CollisionShape3D" parent="Enemy/CharacterBody3D" index="0" unique_id=1565063079]
+[node name="CollisionShape3D" parent="Enemy/CharacterBody3D" index="0" unique_id=1565063079 groups=["enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08911103, 0.00970459, -0.023326874)
 shape = SubResource("BoxShape3D_bybsj")
 
@@ -118,12 +137,6 @@ bones/44/scale = Vector3(1, 0.9999998, 0.9999999)
 bones/45/position = Vector3(0.47565758, 2.1932306, -0.8781691)
 bones/45/scale = Vector3(0.9999999, 0.9999999, 0.99999994)
 bones/46/position = Vector3(-0.049906082, -0.87422186, -0.7447291)
-
-[node name="defaultMaterial_042" parent="Enemy/CharacterBody3D/hydranimations/Head 4/Skeleton3D" index="0" unique_id=2100336019]
-material_override = null
-
-[node name="FogVolume" type="FogVolume" parent="." unique_id=210098370]
-size = Vector3(77.85, 26.98, 64.44)
 
 [editable path="Player"]
 [editable path="Enemy"]

@@ -2,6 +2,8 @@ extends CharacterBody3D
 
 @onready var walk_sound = $walk_sound
 @onready var run_sound = $run_sound
+@onready var bg_scary = $bg_scary
+
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var speed = 5
 var jump_speed = 5
@@ -11,6 +13,9 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta):
+	if not bg_scary.playing:
+		bg_scary.play()
+	
 	velocity.y += -gravity * delta
 	var input = Input.get_vector("left", "right", "forward", "back")
 	var movement_dir = transform.basis * Vector3(input.x, 0, input.y)
