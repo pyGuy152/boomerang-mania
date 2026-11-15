@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cdv3hdxldoxay"]
 
-[ext_resource type="Script" uid="uid://boissfu2urqxp" path="res://scenes/Human/character_body_3d.gd" id="1_hiovg"]
+[ext_resource type="Script" uid="uid://b3brvrajuexcg" path="res://Scripts/Enemy.gd" id="1_hiovg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b3ygk"]
 height = 2.0141602

@@ -7,8 +7,7 @@ var mouse_sensitivity = 0.002
 
 func _physics_process(delta):
 	velocity.y += -gravity * delta
-	var input = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	print("Input vector: ", input)
+	var input = Input.get_vector("left", "right", "forward", "back")
 	var movement_dir = transform.basis * Vector3(input.x, 0, input.y)
 	velocity.x = movement_dir.x * speed
 	velocity.z = movement_dir.z * speed

@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://cw1x30dkhf2g8"]
 
 [ext_resource type="PackedScene" uid="uid://cdv3hdxldoxay" path="res://scenes/Human/Charecter.tscn" id="1_wu6lt"]
+[ext_resource type="Script" uid="uid://boissfu2urqxp" path="res://scenes/Human/character_body_3d.gd" id="2_bybsj"]
+[ext_resource type="PackedScene" uid="uid://btip20urly5ic" path="res://scenes/Enemy/Enemy.tscn" id="2_rs8fj"]
+[ext_resource type="Script" uid="uid://b3brvrajuexcg" path="res://Scripts/Enemy.gd" id="3_n60r3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v20t1"]
 size = Vector3(20, 0.1, 20)
@@ -41,5 +44,18 @@ light_indirect_energy = 16.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=7846786]
 environment = SubResource("Environment_b3ygk")
 
-[node name="Node3D" parent="." unique_id=307893902 instance=ExtResource("1_wu6lt")]
+[node name="Player" parent="." unique_id=307893902 instance=ExtResource("1_wu6lt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.572318, 0)
+
+[node name="CharacterBody3D" parent="Player" index="0" unique_id=2003278769 groups=["player"]]
+script = ExtResource("2_bybsj")
+
+[node name="Enemy" parent="." unique_id=326389053 instance=ExtResource("2_rs8fj")]
+transform = Transform3D(2.48, 0, 0, 0, 2.48, 0, 0, 0, 2.48, 2.5229216, -0.041548133, -4.410925)
+
+[node name="CharacterBody3D" parent="Enemy" index="0" unique_id=1380758884]
+script = ExtResource("3_n60r3")
+
+[editable path="Player"]
+[editable path="Enemy"]
+[editable path="Enemy/CharacterBody3D/hydranimations"]
