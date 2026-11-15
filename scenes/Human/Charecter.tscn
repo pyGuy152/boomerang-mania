@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://cdv3hdxldoxay"]
 
-[ext_resource type="Script" uid="uid://b3brvrajuexcg" path="res://Scripts/Enemy.gd" id="1_hiovg"]
+[ext_resource type="Script" uid="uid://boissfu2urqxp" path="res://scenes/Human/character_body_3d.gd" id="1_hiovg"]
+[ext_resource type="AudioStream" uid="uid://ci5wuld12kjv" path="res://sounds/character/walking.mp3" id="2_qekit"]
+[ext_resource type="AudioStream" uid="uid://cxbl4ea5rtw7w" path="res://sounds/character/running.mp3" id="3_imt4t"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b3ygk"]
 height = 2.0141602
@@ -18,3 +20,9 @@ shape = SubResource("CapsuleShape3D_b3ygk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -0.009115696)
 current = true
 fov = 88.86298
+
+[node name="walk_sound" type="AudioStreamPlayer3D" parent="CharacterBody3D" unique_id=163012011]
+stream = ExtResource("2_qekit")
+
+[node name="run_sound" type="AudioStreamPlayer3D" parent="CharacterBody3D" unique_id=1783306300]
+stream = ExtResource("3_imt4t")
