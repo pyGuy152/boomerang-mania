@@ -12,8 +12,8 @@ shader = ExtResource("3_4qen4")
 shader_parameter/albedo_tex = ExtResource("4_aqwbd")
 shader_parameter/tint = Color(1, 1, 1, 1)
 shader_parameter/use_texture = 1.0
-shader_parameter/global_size = 0.5
-shader_parameter/lit_boost = 1.0
+shader_parameter/global_size = 1.0
+shader_parameter/lit_boost = 1.33200003952
 shader_parameter/l1_threshold = 0.75
 shader_parameter/l1_size = 4.0
 shader_parameter/l1_strength = 2.0
@@ -21,11 +21,11 @@ shader_parameter/l1_darkness = 0.3
 shader_parameter/l2_threshold = 0.45
 shader_parameter/l2_size = 4.0
 shader_parameter/l2_strength = 2.0
-shader_parameter/l2_darkness = 0.4
+shader_parameter/l2_darkness = 0.8690000412775
 shader_parameter/l3_threshold = 0.2
 shader_parameter/l3_size = 4.0
 shader_parameter/l3_strength = 2.0
-shader_parameter/l3_darkness = 0.6
+shader_parameter/l3_darkness = 0.6000000285
 
 [node name="Boomerang" type="Area3D" unique_id=537538721]
 

@@ -1,0 +1,23 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://gdorgkp68dft"]
+
+[ext_resource type="Shader" uid="uid://crpcopk8v0kxm" path="res://Material/dither.gdshader" id="1_34euv"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_34euv")
+shader_parameter/tint = Color(0.27242953, 0.49148482, 0.28630465, 1)
+shader_parameter/use_texture = 1.0
+shader_parameter/global_size = 0.58000002429012
+shader_parameter/lit_boost = 1.0
+shader_parameter/l1_threshold = 1.0
+shader_parameter/l1_size = 5.51200021432
+shader_parameter/l1_strength = 2.0
+shader_parameter/l1_darkness = 0.30800001463
+shader_parameter/l2_threshold = 0.190000009025
+shader_parameter/l2_size = 4.0
+shader_parameter/l2_strength = 2.0
+shader_parameter/l2_darkness = 0.4
+shader_parameter/l3_threshold = 0.4030000191425
+shader_parameter/l3_size = 5.00800019038
+shader_parameter/l3_strength = 2.618000124355
+shader_parameter/l3_darkness = 0.6410000304475
