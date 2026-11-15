@@ -1,4 +1,5 @@
 shader_type spatial;
+render_mode ambient_light_disabled, specular_disabled;
 
 varying vec2 screen_px;
 
@@ -6,7 +7,7 @@ uniform sampler2D albedo_tex : source_color, filter_nearest, repeat_enable;
 uniform vec4 tint : source_color = vec4(1.0);
 uniform float use_texture : hint_range(0.0, 1.0) = 1.0;
 
-uniform float global_size : hint_range(1.0, 8.0) = 1.0;
+uniform float global_size : hint_range(0.1, 1.0) = 0.5;
 uniform float lit_boost : hint_range(0.5, 3.0) = 1.0; // brightness of fully lit areas
 
 group_uniforms layer1;
